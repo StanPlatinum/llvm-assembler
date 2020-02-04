@@ -515,6 +515,17 @@ BitVector X86RegisterInfo::getReservedRegs(const MachineFunction &MF) const {
   // Set the floating point control register as reserved.
   Reserved.set(X86::FPCW);
 
+  //weijie:
+  Reserved.set(X86::R15);
+  Reserved.set(X86::R15D);
+  Reserved.set(X86::R15W);
+  Reserved.set(X86::R15B);
+  // R14 = SFI boundary
+  Reserved.set(X86::R14);
+  Reserved.set(X86::R14D);
+  Reserved.set(X86::R14W);
+  Reserved.set(X86::R14B);
+
   // Set the stack-pointer register and its aliases as reserved.
   for (MCSubRegIterator I(X86::RSP, this, /*IncludeSelf=*/true); I.isValid();
        ++I)
